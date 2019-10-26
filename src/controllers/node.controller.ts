@@ -1,15 +1,21 @@
-import os from "os";
-import { ComputeManagementClient } from "@azure/arm-compute";
-
 import azure from "../client/azure";
 
 const getConnectedDevices = async () => {
-  const computeClient: ComputeManagementClient = await azure.azureClient();
+  const azureClient = await azure.azureClient();
 
-  const connectedDevices = await computeClient.virtualMachines.listAll();
-  return connectedDevices
-    .map(device => device.name)
-    .filter(node => node != os.hostname());
+  const connectedDevices = await azureClient.computeClient.virtualMachines.listAll();
+  const nodes = connectedDevices.map(device => `${device.name}-ip`);
+
+  const publicIPAddresses = await azureClient.networkClient.publicIPAddresses.list(
+    "GenXChallenge"
+  );
+ 
+  const ips = publicIPAddresses
+    .filter(address => !nodes.includes(address.name))
+    .map(address => address.ipAddress)
+    .filter(_ => _); 
+
+  return ips;
 };
 
 export default {
