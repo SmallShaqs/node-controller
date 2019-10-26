@@ -3,16 +3,23 @@ dotenv.config();
 
 import Koa from "koa";
 import koaBody from "koa-body";
+import koaRouter from "koa-router";
 
-import nodeRouter from './routes/node.routes'
-import logRouter from './routes/node.routes'
-
+import nodeRouter from "./routes/node.routes";
+import logRouter from "./routes/log.routes";
 
 const app = new Koa();
+const router = new koaRouter();
+
 const port = process.env.PORT || 3000;
 
-app.use(koaBody());
-app.use(logRouter.routes());
-app.use(nodeRouter.routes());
+router
+  .prefix("/api")
+  .use("/log", logRouter.routes())
+  .use("/node", nodeRouter.routes());
+ 
 
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+app
+  .use(koaBody())
+  .use(router.routes())
+  .listen(port, () => console.log(`App listening on port ${port}!`));

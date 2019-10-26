@@ -1,10 +1,11 @@
 import Router from "koa-router";
+
 import nodeController from "../controllers/node.controller";
 import logger from "../client/logger";
 
 const router = new Router();
 
-router.get("/api/node", async ctx => {
+router.get("/", async ctx => {
   logger.info('/api/node request received')
 
   const result = await nodeController.getConnectedDevices();
