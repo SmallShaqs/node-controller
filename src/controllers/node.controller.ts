@@ -5,7 +5,7 @@ const getConnectedDevices = async (resourceGroup) => {
   const computeClient: ComputeManagementClient = await azure.azureClient();
 
   const connectedDevices = await computeClient.virtualMachines.listAll()
-  return connectedDevices;
+  return connectedDevices.map(device => device.name);
 };
 
 export default {
