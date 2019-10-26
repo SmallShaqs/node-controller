@@ -1,5 +1,5 @@
 const getExample = () => {
-  return "Hello World!";
+  return ["Node1", "Node2"]
 };
 
 export default {
