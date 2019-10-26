@@ -10,10 +10,15 @@
   "author": "Paulius Kutka",
   "license": "ISC",
   "dependencies": {
+    "@azure/arm-compute": "^11.0.0",
+    "@azure/ms-rest-nodeauth": "^3.0.3",
+    "azure-arm-compute": "^10.0.0",
+    "azure-arm-network": "^13.0.0",
     "dotenv": "^8.2.0",
     "koa": "^2.8.1",
     "koa-body": "^4.1.1",
     "koa-router": "^7.4.0",
+    "ms-rest-azure": "^3.0.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4"
   },
