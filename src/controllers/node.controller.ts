@@ -1,8 +1,9 @@
+import os from "os";
 import { ComputeManagementClient } from "@azure/arm-compute";
-import azure from "../client/azure";
-let os = require("os");
 
-const getConnectedDevices = async resourceGroup => {
+import azure from "../client/azure";
+
+const getConnectedDevices = async () => {
   const computeClient: ComputeManagementClient = await azure.azureClient();
 
   const connectedDevices = await computeClient.virtualMachines.listAll();
