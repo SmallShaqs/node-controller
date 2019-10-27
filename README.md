@@ -1,8 +1,6 @@
 ## Master Controller
 
-#### Architecture
-
-The main 
+#### Architecture 
 
 ![Main Architecture](./doc/arch.png)
 
