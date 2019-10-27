@@ -1,17 +1,23 @@
-- Certifications, revoking it from VPN
-    Store certification for every node and check if they're valid.
-    C: VPN is enough
+## Master Controller
 
-- VM's with workloads and batching
-- Each node receive information. If they batch - 10 VM's for each.
+#### Architecture
 
-- VPC on every different Node
-- CPU logging of every node, monitoring - alerting.
-- P2P is not good on itself, have the whole infra in general
+The main 
 
----
+![Main Architecture](./doc/arch.png)
 
-1. Multiple VPC, through VPN
-2. Azure Dashboards - CPU, Counts, in-build alerting
-3. Research: How to deploy other VM's to deploy / kill 
-4. Auto-deploy
+#### Implemented Azure Architecture
+- Every node (VM) in the network has its own Virtual Network (VNet) which is peered to each other
+- All nodes communicate through gateways and VPN
+- A Load Balancer for the the main controller Node
+- Auto Scalled brought up VM Machine Sets in unique Nodes for intensive CPU computation tasks
+- Azure Dashboards with CPU / Bandwidth / IO Ops
+
+#### Implemented Endpoint
+- An endpoint to fetch all the VM IP's from a specific Azure Resource
+
+#### Optimisations
+- gRPC protocol for intercommunication of services
+- ElasticSearch - ELK Stash for logging
+- RDS DB for explicit settings, which will control the various nodes.
+- Auto Deploy of templates to new nodes
