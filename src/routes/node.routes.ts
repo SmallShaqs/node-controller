@@ -9,7 +9,8 @@ router.get("/api/node", async ctx => {
 
   const result = await nodeController.getConnectedDevices();
 
-  logger.info(`/api/node nodes: ${result}`)
+  logger.info('/api/node network nodes')
+  console.table(result)
   ctx.body = result;
 });
 
