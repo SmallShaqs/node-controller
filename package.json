@@ -13,7 +13,7 @@
   "dependencies": {
     "@azure/arm-compute": "^11.0.0",
     "@azure/arm-network": "^18.0.0",
-    "@azure/ms-rest-nodeauth": "^3.0.3",
+    "@azure/ms-rest-nodeauth": "^3.0.8",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "koa": "^2.8.1",
